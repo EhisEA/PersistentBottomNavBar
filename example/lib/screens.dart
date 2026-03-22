@@ -5,13 +5,13 @@ import "package:persistent_bottom_nav_bar_example_project/modal_screen.dart";
 
 class MainScreen extends StatelessWidget {
   const MainScreen(
-      {final Key key,
+      {final Key? key,
       this.menuScreenContext,
       this.onScreenHideButtonPressed,
       this.hideStatus = false})
       : super(key: key);
-  final BuildContext menuScreenContext;
-  final VoidCallback onScreenHideButtonPressed;
+  final BuildContext? menuScreenContext;
+  final VoidCallback? onScreenHideButtonPressed;
   final bool hideStatus;
 
   @override
@@ -79,7 +79,6 @@ class MainScreen extends StatelessWidget {
                       showModalBottomSheet(
                         context: context,
                         backgroundColor: Colors.white,
-                        useRootNavigator: false,
                         builder: (final context) => Center(
                           child: ElevatedButton(
                             onPressed: () {
@@ -125,7 +124,9 @@ class MainScreen extends StatelessWidget {
                 Center(
                   child: ElevatedButton(
                     onPressed: () {
-                      Navigator.of(menuScreenContext).pop();
+                      if (menuScreenContext != null) {
+                        Navigator.of(menuScreenContext!).pop();
+                      }
                     },
                     child: const Text(
                       "<- Main Menu",
@@ -144,7 +145,7 @@ class MainScreen extends StatelessWidget {
 }
 
 class MainScreen2 extends StatelessWidget {
-  const MainScreen2({final Key key}) : super(key: key);
+  const MainScreen2({final Key? key}) : super(key: key);
 
   @override
   Widget build(final BuildContext context) => Scaffold(
@@ -179,7 +180,7 @@ class MainScreen2 extends StatelessWidget {
 }
 
 class MainScreen3 extends StatelessWidget {
-  const MainScreen3({final Key key}) : super(key: key);
+  const MainScreen3({final Key? key}) : super(key: key);
 
   @override
   Widget build(final BuildContext context) => Scaffold(
